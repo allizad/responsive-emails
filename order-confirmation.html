@@ -1,0 +1,549 @@
+<!-- paragraph below banner -->
+
+<tr>
+ <td bgcolor="#ffffff" style="padding: 20px 30px 20px 30px; line-height: 1.3; border-bottom: 1px solid gray; color: gray;">
+  Your order is next in line to be printed, hand assembled, stitched
+  together, and then shipped right to your door. Since we are making your
+  item especially for you, kindly allow up to 10 business days for your
+  order to ship. You will receive another email with the tracking
+  information when it has been shipped. Whoohoo!
+ </td>
+</tr>
+
+
+{% if order.includes_voucher %}
+<tr>
+ <td bgcolor="#ffffff" style="padding: 20px 30px 20px 30px; line-height: 1.3; border-bottom: 1px solid gray; color: gray;">
+   Congratuations on getting a photo book voucher. Your voucher code works the
+   same way a discount code does. When you are ready to redeem your photo book
+   voucher, go and build your book and then once you've added your photo book to
+   the cart, copy the voucher into the discount code field.
+ </td>
+</tr>
+{% endif %}
+
+<!-- shipping and details -->
+
+<tr>
+ <td bgcolor="#ffffff" style="padding: 20px 30px 15px 30px; border-bottom: 1px solid gray;">
+   <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+    <tr>
+
+     <td width="380" valign="top">
+       <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tr>
+           <td width="100%" style="padding: 0px 0px 10px 0px; letter-spacing: 1.5px;">
+             ORDER DETAILS
+           </td>
+         </tr>
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; font-style: italic; color: gray;">
+             placed by: {{ order.first_name }} {{ order.last_name }}
+           </td>
+         </tr>
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             order number: <a href="{{ domain }}/shop/checkout/success/{{ order.id }}/" style="color: #57D2C8;">986123987</a>
+           </td>
+         </tr>
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             date: {{ order.order_placed|date:"DATETIME_FORMAT" }}
+           </td>
+         </tr>
+         {% if order.phone %}
+         <tr>
+           <td width="100%" style="color: gray;">
+             phone: {{ order.phone }}
+           </td>
+         </tr>
+         {% endif %}
+       </table>
+     </td>
+
+     <td style="font-size: 0; line-height: 0;" width="20">
+      &nbsp;
+     </td>
+
+     <td width="220" valign="top">
+       <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tr>
+           <td width="100%" style="padding: 0px 0px 10px 0px; letter-spacing: 1.5px;">
+             SHIPPING TO
+           </td>
+         </tr>
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             {{ order.shipping_name }} {{ order.shipping_last_name }}
+           </td>
+         </tr>
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             {{ order.street_address }}{% if order.street_address2 %}, {{ order.street_address2 }}{% endif %}
+           </td>
+         </tr>
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             {{ order.city }}, {{ order.state }}
+           </td>
+         </tr>
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             {{ order.zip_code }}
+           </td>
+         </tr>
+       </table>
+     </td>
+
+    </tr>
+
+   </table>
+ </td>
+</tr>
+
+<!-- order items -->
+
+<tr>
+ <td bgcolor="#ffffff" style="padding: 20px 30px 20px 30px; border-bottom: 1px solid gray;">
+   <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+   <!-- for each item -->
+     <tr>
+
+       <td style="font-size: 0; line-height: 0;" width="100" valign="top">
+         &nbsp;
+       </td>
+
+       <td style="font-size: 0; line-height: 0;" width="20">
+        &nbsp;
+       </td>
+
+       <td width="260" valign="top" style="padding: 5px 0px 15px 0px; letter-spacing: 1.5px;">
+         DESCRIPTION
+       </td>
+
+       <td style="font-size: 0; line-height: 0;" width="20">
+        &nbsp;
+       </td>
+
+       <td width="100" valign="top" style="padding: 5px 0px 15px 0px; letter-spacing: 1.5px;">
+         QUANTITY
+       </td>
+
+       <td style="font-size: 0; line-height: 0;" width="20">
+        &nbsp;5
+       </td>
+
+       <td width="100" valign="top" style="padding: 5px 0px 15px 0px; letter-spacing: 1.5px;">
+         TOTAL
+       </td>
+     </tr>
+
+     {% for item in order.orderitems.select_subclasses %}
+     <tr>
+       <td width="100" valign="top" >
+         <img src="{{ item.preview_url }}" alt="" style="padding: 0px 0px 10px 0px;" width="100"/>
+       </td>
+
+       <td style="font-size: 0; line-height: 0;" width="20">
+        &nbsp;
+       </td>
+
+       {% if item.product.product_type == "voucher" %}
+       <td width="260" valign="top">
+         <table border="0" cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               Voucher
+             </td>
+           </tr>
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               codes:
+             </td>
+           </tr>
+
+           {% for code in item.codes %}
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ code }}
+             </td>
+           </tr>
+           {% endfor %}
+
+         </table>
+       </td>
+
+       {% elif item.product.name == "note" %}
+       <td width="260" valign="top">
+         <table border="0" cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               Note
+             </td>
+           </tr>
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ item.cover_design.name }}
+             </td>
+           </tr>
+
+           {% if item.back_monogram %}
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               Front: {{ item.back_monogram.text }}, {{ item.back_monogram.style|capfirst }}, {{ item.back_monogram.color.name }}
+             </td>
+           </tr>
+           {% endif %}
+
+           {% if item.monogram %}
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               Back: {{ item.monogram.text }}, {{ item.monogram.style|capfirst }}, {{ item.monogram.background|capfirst }}, {{ item.monogram.color.name }})
+             </td>
+           </tr>
+           {% endif %}
+
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               ${{ item|item_total_price|floatformat:"-2" }}
+             </td>
+           </tr>
+         </table>
+       </td>
+
+       {% elif item.product.product_type == "card" %}
+       <td width="260" valign="top">
+         <table border="0" cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               Card
+             </td>
+           </tr>
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ item.template.name }}, {{ item.cover_design.name }}
+             </td>
+           </tr>
+
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ item.paper_type.name }}
+             </td>
+           </tr>
+
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ item.die_cut.name }}
+             </td>
+           </tr>
+
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ item.envelope.name }}
+             </td>
+           </tr>
+
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               ${{ item|item_total_price|floatformat:"-2" }}
+             </td>
+           </tr>
+
+           {% if item.address %}
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               Send to: {{ item.address.first_name }} {{ item.address.last_name }} <br>
+               {{ item.address.street_address }}<br>
+               {% if item.address.street_address2 %}
+               {{ item.address.street_address2 }} <br>
+               {% endif %}
+               {{ item.address.city }}, {{ item.address.state }} {{ item.address.zip_code }}
+             </td>
+           </tr>
+           {% endif %}
+
+         </table>
+       </td>
+
+       {% elif item.product.product_type == "photobook" %}
+       <td width="260" valign="top">
+         <table border="0" cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               Photo Book
+             </td>
+           </tr>
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ item.data.title }}
+             </td>
+           </tr>
+
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ item.cover_design.name }}, {{ item.product.product_size }}
+             </td>
+           </tr>
+
+           {% if item.address %}
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               Send to: {{ item.address.first_name }} {{ item.address.last_name }} <br>
+               {{ item.address.street_address }}<br>
+               {% if item.address.street_address2 %}
+               {{ item.address.street_address2 }} <br>
+               {% endif %}
+               {{ item.address.city }}, {{ item.address.state }} {{ item.address.zip_code }}
+             </td>
+           </tr>
+           {% endif %}
+
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               ${{ item|item_total_price|floatformat:"-2" }}
+             </td>
+           </tr>
+         </table>
+       </td>
+
+       {% elif item.product.name == "book" %}
+       <td width="260" valign="top">
+         <table border="0" cellpadding="0" cellspacing="0" width="100%">
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               Book
+             </td>
+           </tr>
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ item.inside_pages.name }}
+             </td>
+           </tr>
+
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ item.cover_design.name }}
+             </td>
+           </tr>
+
+           {% if item.monogram %}
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               “{{ item.monogram.text }}”, {{ item.monogram.style|capfirst }}
+             </td>
+           </tr>
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               {{ item.monogram.background|capfirst }}, {{ item.monogram.color.name }}
+             </td>
+           </tr>
+           {% endif %}
+
+           <tr>
+             <td width="100%" style="padding: 0px 0px 7px 0px; color: gray;">
+               ${{ item|item_total_price|floatformat:"-2" }}
+             </td>
+           </tr>
+         </table>
+       </td>
+
+       {% endif %}
+
+       <td style="font-size: 0; line-height: 0;" width="20">
+        &nbsp;
+       </td>
+
+       <td width="100" valign="top" style="color: gray;">
+         {{ item.quantity }}
+       </td>
+
+       <td style="font-size: 0; line-height: 0;" width="20">
+        &nbsp;
+       </td>
+
+       <td width="100" valign="top" style="color: gray;">
+         ${{ item|item_total_price|floatformat:"-2" }}
+       </td>
+     </tr>
+     {% endfor %}
+
+  </table>
+ </td>
+</tr>
+
+<!-- payment and tracking -->
+
+<tr>
+ <td bgcolor="#ffffff" style="padding: 20px 30px 20px 30px;">
+   <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+    <tr>
+
+      <td width="360" valign="top">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td width="100%" style="padding: 0px 0px 10px 0px; letter-spacing: 1.5px;">
+              TRACKING
+            </td>
+          </tr>
+          {% if order.includes_shipped_items %}
+          <tr>
+            <td width="100%" style="padding: 0px 0px 5px 0px; line-height: 1.3; color: gray;">
+              Can’t wait for your May Designs to arrive?
+              Track your order status <a href="{{ domain }}/accounts/profile/orders" style="color: #57D2C8;">here</a>.
+              You can ever re-order if you need more!
+            </td>
+          </tr>
+          {% endif %}
+        </table>
+      </td>
+
+     <td style="font-size: 0; line-height: 0;" width="40">
+      &nbsp;
+     </td>
+
+     <td width="220" valign="top">
+       <table border="0" cellpadding="0" cellspacing="0" width="100%">
+         <tr>
+           <td width="100%" style="padding: 0px 0px 10px 0px; letter-spacing: 1.5px;">
+             PAYMENT
+           </td>
+         </tr>
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             subtotal: ${{ subtotal }}
+           </td>
+         </tr>
+
+         {% if order.discount_amt > 0 %}
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             discounts: -${{ order.discount_amt|floatformat:"-2" }} ({{ order.discount_info }})
+             {% else %}
+             discounts: -$0.00
+           </td>
+         </tr>
+         {% endif %}
+
+         {% if order.tax_amt > 0 %}
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             tax: ${{ order.tax_amt|floatformat:"-2" }}
+             {% else %}
+             tax: $0.00
+           </td>
+         </tr>
+         {% endif %}
+
+         {% if order.gift_card_amount != 0 %}
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             gift card credit: ${{ order.gift_card_amount }}
+           </td>
+         </tr>
+         {% endif %}
+
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             shipping: ${{ order.shipping_amt }}
+           </td>
+         </tr>
+
+         <tr>
+           <td width="100%" style="padding: 0px 0px 5px 0px; color: gray;">
+             total charged: ${{ order.total|floatformat:"-2" }}
+           </td>
+         </tr>
+       </table>
+     </td>
+    </tr>
+
+   </table>
+ </td>
+</tr>
+
+
+{% if order.includes_shipped_items %}Thanks for your order!  We'll be sending it off to be printed, hand assembled,
+stitched together with a good old-fashioned sewing machine, and then shipped
+right to your door. Since we are making your item especially for you, kindly
+allow up to 10 business days for your order to ship. You will receive another
+email with the tracking information when it has been shipped! Woohoo!{% else %}Thanks for your order!{% endif %}
+
+{% if order.includes_voucher %}Congratuations on getting a photo book voucher. Your voucher code works the
+same way a discount code does. When you are ready to redeem your photo book
+voucher, go and build your book and then once you've added your photo book to
+the cart, copy the voucher into the discount code field.{% endif %}
+
+#### Order Details:
+
+**Order placed by {{ order.first_name }} {{ order.last_name }}**
+
+* Order number: [{{ order.id }}]({{ domain }}/shop/checkout/success/{{ order.id }}/)
+* Date: {{ order.order_placed|date:"DATETIME_FORMAT" }}{% if order.phone %}
+* Phone: {{ order.phone }}{% endif %}
+
+{% if order.includes_shipped_items %}{% if is_mail_for_me %}
+**Shipping to: {{ mail_for_me_address.first_name }} {{ mail_for_me_address.last_name }}**
+
+{{ mail_for_me_address.street_address }}  {% if mail_for_me_address.street_address2 %}
+{{ mail_for_me_address.street_address2 }}  {% endif %}
+{{ mail_for_me_address.city }}, {{ mail_for_me_address.state }} {{ mail_for_me_address.zip_code }}
+{% else %}
+**Shipping to: {{ order.shipping_name }} {{ order.shipping_last_name }}**
+
+{{ order.street_address }}  {% if order.street_address2 %}
+{{ order.street_address2 }}  {% endif %}
+{{ order.city }}, {{ order.state }} {{ order.zip_code }}
+{% endif %}{% endif %}
+
+** Order Items **
+
+{% for item in order.orderitems.select_subclasses %}
+  {% if item.product.product_type == "voucher" %}
+  * {{ item.product.title}} - codes: {% for code in item.codes %}
+    * **{{ code }}**{% endfor %}
+  {% elif item.product.name == "book" %}
+  * Book: **{{ item.cover_design.name }}**, {% if item.monogram %}monogram("{{ item.monogram.text }}",{{ item.monogram.style|capfirst }}, {{ item.monogram.background|capfirst }}, {{ item.monogram.color.name }}), {% endif %} {{ item.inside_pages.name }}{% if item.quantity > 1 %} <strong>({{ item.quantity }})</strong>{% endif %}, ${{ item|item_total_price|floatformat:"-2" }}
+  {% elif item.product.name == "note" %}
+  * Note: **{{ item.cover_design.name }}**, {% if item.back_monogram %}front monogram("{{ item.back_monogram.text }}",{{ item.back_monogram.style|capfirst }}, {{ item.back_monogram.color.name }}), {% endif %}{% if item.monogram %}back monogram("{{ item.monogram.text }}",{{ item.monogram.style|capfirst }}, {{ item.monogram.background|capfirst }}, {{ item.monogram.color.name }}), {% endif %} {{ item.liner.name }}{% if item.quantity > 1 %} <strong>({{ item.quantity }})</strong>{% endif %}, ${{ item|item_total_price|floatformat:"-2" }}
+  {% elif item.product.product_type == "card" %}
+  * {{ item.product.title }}: {{ item.template.name }}, {{ item.cover_design.name }}, {{ item.paper_type.name }}, {{ item.die_cut.name }}, {{ item.envelope.name }} {% if item.quantity > 1 %} <strong>({{ item.quantity }})</strong>{% endif %}, ${{ item|item_total_price|floatformat:"-2" }} - {{ item.id }}
+
+      {% if item.address %}
+      Shipping to: {{ item.address.first_name }} {{ item.address.last_name }}
+      {{ item.address.street_address }}  {% if item.address.street_address2 %}
+      {{ item.address.street_address2 }}  {% endif %}
+      {{ item.address.city }}, {{ item.address.state }} {{ item.address.zip_code }}
+      {% endif %}
+
+  {% elif item.product.product_type == "photobook" %}
+  * {{ item.product.title }}: {{ item.data.title }}, {{ item.cover_design.name }}, {{ item.product.product_size }}, ${{ item|item_total_price|floatformat:"-2" }} <strong>({{ item.quantity }})</strong> - {{ item.id }}
+  {% if item.is_mail_for_me and not is_mail_for_me %}
+    **Shipping to: {{ item.address.first_name }} {{ item.address.last_name }}**
+
+    {{ item.address.street_address }}  {% if item.address.street_address2 %}
+    {{ item.address.street_address2 }}  {% endif %}
+    {{ item.address.city }}, {{ item.address.state }} {{ item.address.zip_code }}
+  {% endif %}
+  {% else %}
+  * Product: **{{ item.product.title }}** {% if item.quantity > 1 %} <strong>({{ item.quantity }})</strong>{% endif %}, ${{ item|item_total_price|floatformat:"-2" }}
+  {% endif %}
+{% endfor %}
+
+** Payment **
+
+* Subtotal: ${{ subtotal }}  {% if order.discount_amt > 0 %}
+* Discounts: -${{ order.discount_amt|floatformat:"-2" }} ({{ order.discount_info }})  {% else %}
+* Discounts: -$0.00  {% endif %}{% if order.tax_amt > 0 %}
+* Tax: ${{ order.tax_amt|floatformat:"-2" }}  {% else %}
+* Tax: $0.00  {% endif %}
+* Shipping: ${{ order.shipping_amt }}  {% if order.gift_card_amount != 0 %}
+* Gift Card Credit: ${{ order.gift_card_amount }}  {% endif %}
+* **Total charged: ${{ order.total|floatformat:"-2" }}**
+
+{% if order.includes_shipped_items %}Can't wait for your May Designs to arrive? You can track your order status
+[here]({{ domain }}/accounts/profile/orders). You can even re-order if you need more!{% endif %}
+
+Thank you again for shopping with May Designs. Have a great day!
