@@ -98,13 +98,13 @@
     }
 
     .button {
-      padding: 30px 0;
+      padding: 10px 0 15px 0;
     }
 
 
     .mini-block {
       /*border: 1px solid #e5e5e5;*/
-      border-radius: 5px;
+      /*border-radius: 5px;*/
       background-color: #ffffff;
       padding: 12px 15px 15px;
       text-align: left;
@@ -133,7 +133,7 @@
     }
 
     .item-table {
-      padding: 50px 20px;
+      padding: 30px 20px;
       width: 560px;
     }
 
@@ -178,12 +178,11 @@
     }
 
     .mini-img img {
-      border-radius: 5px;
       width: 140px;
     }
 
     .mini-imgs {
-      padding: 25px 0 30px;
+      padding: 25px 0px 0px;
     }
 
   </style>
@@ -241,7 +240,7 @@
       }
 
        td[class="button"] {
-        padding: 5px 5px 30px !important;
+        padding: 30px 5px 30px !important;
       }
 
       td[class*="free-text"] {
@@ -249,10 +248,11 @@
       }
 
       td[class~="mobile-hide-img"] {
-        display: none !important;
+        padding-right: 10px !important;
+        /*display: none !important;
         height: 0 !important;
         width: 0 !important;
-        line-height: 0 !important;
+        line-height: 0 !important;*/
       }
 
       td[class~="item"] {
@@ -298,7 +298,7 @@
   <tr>
     <td align="left" valign="top" width="100%" style="background: white;">
       <center>
-      <img src="http://s3.amazonaws.com/swu-filepicker/SBb2fQPrQ5ezxmqUTgCr_transparent.png" class="force-width-gmail">
+      <img src="http://s3.amazonaws.com/swu-filepicker/SBb2fQPrQ5ezxmqUTgCr_transparent.png" height="2" width="100%" class="force-width-gmail">
         <table cellspacing="0" cellpadding="0" width="100%" bgcolor="#ffffff" background="white" style="background-color:transparent">
           <tr>
             <td width="100%" height="80" valign="top" style="text-align: center; vertical-align:middle;">
@@ -311,7 +311,7 @@
                 <table cellpadding="0" cellspacing="0" width="600" class="w320">
                   <tr>
                     <td class="center" style="padding-top: 20px; padding-bottom: 20px;">
-                      <a href="#"> <img width="250" src="../img/logos/logo-prettysimple.png" alt="" /> </a>
+                      <a href="#"> <img width="200" src="../img/logos/logo-prettysimple.png" alt="" /> </a>
                     </td>
                   </tr>
                 </table>
@@ -327,35 +327,44 @@
     </td>
   </tr> <!-- /header logo -->
 
-  <!-- order details -->
+  <!-- order info & shipping -->
   <tr>
     <td align="center" valign="top" width="100%" style="background-color: #ffffff;" class="">
       <center>
         <!-- washi -->
         <table cellspacing="0" cellpadding="0" height="15" width="600" class="w320">
           <tr>
-            <td align="left" valign="top" width="100%" style="background:repeat-x url(http://www.maydesigns.com/static/img/new/stitch.b5e7aa49874a.gif) #ffffff;">
-
+            <td align="center" valign="top" width="100%">
+              <img width="100%" height="auto" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/6306ae2e-ecac-4109-a000-75136dc87c53.jpg" alt="" />
             </td>
           </tr>
         </table><!-- /washi -->
-        <table cellspacing="0" cellpadding="0" width="600" class="w320" style="background: #ffffff;">
+        <table cellspacing="0" cellpadding="0" width="600" class="w320" style="background: #f7f7f7;">
           <tr>
-            <td>
-
-            </td>
-          </tr>
-          <tr style="border-bottom: 1px solid #ddd;">
             <td class="header-img">
               <!-- Woohoo! Your order has shipped! -->
-              <img src="../img/pieces/hooray.jpg" style="max-width: 100%;" alt="" />
+              <img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/6a9e3d90-19c0-459c-a873-721a46a56a2f.jpg" style="max-width: 100%;" alt="" />
             </td>
           </tr>
-          <!-- <tr style="border-bottom: 1px solid #ddd;">
+          <tr>
             <td class="free-text">
-              Start hunting down the postman, because your May Designs order is on the way! <a href="#">Track your order here.</a>
+              Your order is next in line to be printed, hand assembled, stitched together, and then shipped right to your door.
+              Since we are making your item especially for you, kindly allow up to 10 business days for your order to ship.
+              You will receive another email with the tracking information when it has been shipped. Whoohoo!
+              Track your order status <a href="#">here</a> or click the button above. You can even re-order if you need more!
             </td>
-          </tr> -->
+          </tr>
+          <tr>
+            <td class="button">
+              <div><!--[if mso]>
+                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:155px;" arcsize="15%" strokecolor="#ffffff" fillcolor="#ff6f6f">
+                  <w:anchorlock/>
+                  <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">Track Order</center>
+                </v:roundrect>
+              <![endif]--><a href="http://"
+              style="background-color:#57D2C8;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:18px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;width:235px;-webkit-text-size-adjust:none;mso-hide:all;">VIEW ORDER STATUS</a></div>
+            </td>
+          </tr>
           <tr>
             <td class="w320">
               <table cellpadding="0" cellspacing="0" width="100%">
@@ -367,16 +376,11 @@
                           <table cellspacing="0" cellpadding="0" width="100%" style="border-collapse:separate !important;">
                             <tr>
                               <td class="mini-block">
-                                <span class="header-sm">ORDER DETAILS</span><br />
+                                <span class="header-sm">ORDER <a href="">#2867509</a></span><br />
                                 placed by: Allison Zadrozny <br />
-                                order number: <a href="">2867509</a> <br />
                                 date: March 27, 2015, 2:14 p.m.  <br />
                                 phone: 8583423151 <br />
-                                US Priority Mail: 2-5 business days <br />
                                 <br />
-                                <span class="header-sm">TRACKING</span><br />
-                                Track your order status <a href="#">here</a>. <br />
-                                You can even re-order if you need more!
                               </td>
                             </tr>
                           </table>
@@ -391,17 +395,11 @@
                           <table cellspacing="0" cellpadding="0" width="100%" style="border-collapse:separate !important;">
                             <tr>
                               <td class="mini-block">
-                                <span class="header-sm">SHIPPING ADDRESS</span><br />
+                                <span class="header-sm">SHIPPING</span><br />
+                                US Priority Mail: 2-5 business days <br />
                                 Allison Zadrozny <br />
                                 500 E Riverside Dr Apt 139 <br />
-                                Austin, TX <br />
-                                78704-1340 <br />
-                                <br />
-                                <br />
-                                <span class="header-sm">DISCOUNTS APPLIED</span><br />
-                                MDSTAFF (-60%) <br />
-                                <br />
-                                <br />
+                                Austin, TX 78704-1340 <br />
                               </td>
                             </tr>
                           </table>
@@ -416,12 +414,19 @@
         </table>
       </center>
     </td>
-  </tr><!-- /order details -->
+  </tr><!-- /order info & shipping -->
 
   <!-- line items -->
   <tr>
     <td align="center" valign="top" width="100%" style="background-color: #ffffff;">
       <center>
+        <table cellpadding="0" cellspacing="0" width="600" class="w320">
+          <tr>
+            <td width="100%" align="center" style="padding: 20px 0 10px 0;">
+              <span class="header-sm">ORDER DETAILS</span>
+            </td>
+          </tr>
+        </table>
         <table cellpadding="0" cellspacing="0" width="600" class="w320">
             <tr>
               <td class="item-table">
@@ -444,7 +449,8 @@
                       <table cellspacing="0" cellpadding="0" width="100%">
                         <tr>
                           <td class="mobile-hide-img">
-                            <img width="110" height="auto" src="../img/britt-bass-watercolor.png" alt="item1">
+                            <!-- testing: book -->
+                            <img width="110" height="auto" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/bae5085f-0311-4704-976b-d64bb9a122ee.png" alt="item1">
                           </td>
                           <td class="product">
                             <span style="color: #4d4d4d; font-weight:bold;">Book</span> <br />
@@ -469,7 +475,8 @@
                       <table cellspacing="0" cellpadding="0" width="100%">
                         <tr>
                           <td class="mobile-hide-img">
-                            <img width="110" height="auto" src="../img/britt-bass-watercolor-1.png" alt="item2">
+                            <!-- testing: note -->
+                            <img width="110" height="auto" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/6f34e781-d6bf-4dce-af74-d9e16f33c27b.png" alt="item2">
                           </td>
                           <td class="product">
                             <span style="color: #4d4d4d; font-weight: bold;">Note</span> <br />
@@ -496,11 +503,12 @@
 
 
                   <tr>
-                    <td class="item-col item">
+                    <td class="item-col item" style="border-top: 1px solid #cccccc;">
                     </td>
                     <td class="item-col quantity" style="text-align:right; padding-right: 10px; border-top: 1px solid #cccccc;">
                       <span class="total-space">Subtotal</span> <br />
                       <span class="total-space">Discounts</span> <br />
+                      <span class="total-space" style="height: 50px;">Code</span> <br />
                       <span class="total-space">Tax</span>  <br />
                       <span class="total-space">Shipping</span> <br />
                       <span class="total-space" style="font-weight: bold; color: gray">Total</span>
@@ -508,6 +516,7 @@
                     <td class="item-col price" style="text-align: left; border-top: 1px solid #cccccc;">
                       <span class="total-space">$38.00</span> <br />
                       <span class="total-space">($41.00)</span> <br />
+                      <span class="total-space" style="height: 50px;">new-3X4N-1X60-4072</span> <br />
                       <span class="total-space">$0.75</span>  <br />
                       <span class="total-space">$1.00</span>  <br />
                       <span class="total-space" style="font-weight:bold; color: gray">$15.77</span>
@@ -523,12 +532,21 @@
   </tr><!-- /line items -->
 
   <tr>
-    <td align="center" valign="top" width="100%" style="background-color: #ffffff;  border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
+    <td align="center" valign="top" width="100%" style="background-color: #ffffff;">
       <center>
+        <!-- washi -->
+        <table cellspacing="0" cellpadding="0" height="15" width="600" class="w320">
+          <tr>
+            <td align="center" valign="top" width="100%">
+              <img width="100%" height="auto" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/6306ae2e-ecac-4109-a000-75136dc87c53.jpg" alt="" />
+            </td>
+          </tr>
+        </table><!-- /washi -->
         <table cellpadding="0" cellspacing="0" width="600" class="w320">
           <tr>
-            <td class="header-md" style="text-align:center;">
-              Come check us out!
+            <td class="header-img">
+              <!-- we're super friendly! follow us here! -->
+              <img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/7189b680-b12e-44ce-8981-a979230cd322.jpg" style="max-width: 100%;" alt="" />
             </td>
           </tr>
           <tr>
@@ -539,18 +557,18 @@
                     <table cellspacing="0" cellpadding="0" width="100%" style="border-collapse:separate !important;">
                       <tr>
                         <td class="mini-img">
-                          <a href=""><img src="http://s3.amazonaws.com/swu-filepicker/u3EYVdcIQo6dZiKefuLu_bracelet.jpg" alt="product" /></a>
+                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/db04cda1-dd6d-4399-a87f-d4a38ae48239.jpg" alt="product" /></a>
                         </td>
                         <td class="mini-img">
-                          <a href=""><img src="http://s3.amazonaws.com/swu-filepicker/yyN7crRfTTW6l8fO0S0S_hat.jpg" alt="product" /></a>
+                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/fb981765-2ac8-4e8a-9be6-a0489ae67781.jpg" alt="product" /></a>
                         </td>
                       </tr>
                       <tr>
                         <td class="mini-img">
-                          <a href=""><img src="http://s3.amazonaws.com/swu-filepicker/DXWZ4PzwQUGI0wQoABDt_jacket.jpg" alt="product" /></a>
+                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/4e10cf0d-cf6c-452e-bb77-aaf1f3663266.jpg" alt="product" /></a>
                         </td>
                         <td class="mini-img">
-                          <a href=""><img src="http://s3.amazonaws.com/swu-filepicker/RPezUIwPRv8pjatAAH1E_item_images_19.jpg" alt="product" /></a>
+                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/265b3adf-7a26-42a4-bc34-e74ad0c92edc.jpg" alt="product" /></a>
                         </td>
                       </tr>
                     </table>
@@ -559,18 +577,18 @@
                     <table cellspacing="0" cellpadding="0" width="100%" style="border-collapse:separate !important;">
                       <tr>
                         <td class="mini-img">
-                          <a href=""><img src="http://s3.amazonaws.com/swu-filepicker/9wRy50HQTg2CTyZA5Ozi_item_images_16.jpg" alt="product" /></a>
+                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/a2bc42dd-f49b-4273-ae13-286a29aa43cb.jpg" alt="product" /></a>
                         </td>
                         <td class="mini-img">
-                          <a href=""><img src="http://s3.amazonaws.com/swu-filepicker/RPezUIwPRv8pjatAAH1E_item_images_19.jpg" alt="product" /></a>
+                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/d24d4a46-e31f-453d-bd72-d0c628b1eb73.jpg" alt="product" /></a>
                         </td>
                       </tr>
                       <tr>
                         <td class="mini-img">
-                          <a href=""><img src="http://s3.amazonaws.com/swu-filepicker/DXWZ4PzwQUGI0wQoABDt_jacket.jpg" alt="product" /></a>
+                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/6fd793a2-8064-4a26-8707-07d1d1f976ee.jpg" alt="product" /></a>
                         </td>
                         <td class="mini-img">
-                          <a href=""><img src="http://s3.amazonaws.com/swu-filepicker/u3EYVdcIQo6dZiKefuLu_bracelet.jpg" alt="product" /></a>
+                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/e88d8f28-9d1f-49d0-891d-7294df9363d7.jpg" alt="product" /></a>
                         </td>
                       </tr>
                     </table>
@@ -588,14 +606,6 @@
   <tr>
     <td align="center" valign="top" width="100%" style="background-color: #ffffff; height: 100px;">
       <center>
-        <!-- washi -->
-        <table cellspacing="0" cellpadding="0" height="15" width="600" class="w320">
-          <tr>
-            <td align="left" valign="top" width="100%" style="background:repeat-x url(http://www.maydesigns.com/static/img/new/stitch.b5e7aa49874a.gif) #ffffff;">
-
-            </td>
-          </tr>
-        </table><!-- /washi -->
 
       <!-- main footer content -->
       <table class="footer-wrap">
@@ -606,23 +616,6 @@
             <!-- content -->
             <div class="content">
               <table>
-                <tr>
-                  <td align="center">
-                    <p style="letter-spacing: 1px;">
-                      WE’RE SUPER FRIENDLY! FIND US HERE:
-                    </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td align="center">
-                    <p>
-                      <a href="https://www.facebook.com/MayBooks" style="margin-right: 5px;"><img width="25" src="../img/icons/facebook.png" alt="" /></a>
-                      <a href="https://www.pinterest.com/maybooks/" style="margin-right: 5px;"><img width="25" src="../img/icons/pinterest.png" alt="" /></a>
-                      <a href="https://twitter.com/maydesigns" style="margin-right: 5px;"><img width="25" src="../img/icons/twitter.png" alt="" /></a>
-                      <a href="https://instagram.com/maydesigns/" style="margin-right: 5px;"><img width="25" src="../img/icons/instagram.png" alt="" /></a>
-                    </p>
-                  </td>
-                </tr>
                 <tr>
                   <td align="center">
                     <p>
