@@ -94,7 +94,13 @@
 
     .free-text {
       width: 100% !important;
-      padding: 15px 60px 15px;
+      padding: 15px 15px 0;
+    }
+
+    p.extra-info {
+      background: white;
+      padding: 15px;
+      margin: 0;
     }
 
     .button {
@@ -103,8 +109,6 @@
 
 
     .mini-block {
-      /*border: 1px solid #e5e5e5;*/
-      /*border-radius: 5px;*/
       background-color: #ffffff;
       padding: 12px 15px 15px;
       text-align: left;
@@ -148,14 +152,12 @@
 
     .mobile-hide-img img {
       border: 1px solid #e6e6e6;
-      border-radius: 4px;
     }
 
     .title-dark {
       text-align: left;
       border-bottom: 1px solid #cccccc;
       color: #4d4d4d;
-      font-weight: 700;
       padding-bottom: 5px;
     }
 
@@ -185,17 +187,30 @@
       padding: 25px 0px 0px;
     }
 
+    span.code {
+      height: 50px;
+    }
+
+    img.book {
+      border-radius: 0px 10px 10px 0px !important;
+    }
+
+    img.note {
+      border-radius: 0px !important;
+    }
+
   </style>
 
   <style type="text/css" media="screen">
-    @import url(http://fonts.googleapis.com/css?family=Oxygen:400,700);
+    /*@import url(http://fonts.googleapis.com/css?family=Open+Sans);*/
   </style>
 
   <style type="text/css" media="screen">
     @media screen {
       /* Thanks Outlook 2013! http://goo.gl/XLxpyl */
       * {
-        font-family: 'Oxygen', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
+        font-family: 'Open Sans', 'Arial', 'sans-serif' !important;
+        font-weight: 300;
       }
     }
   </style>
@@ -203,6 +218,10 @@
   <style type="text/css" media="only screen and (max-width: 480px)">
     /* Mobile styles */
     @media only screen and (max-width: 480px) {
+
+      span[class*="code"] {
+        height: 100px !important;
+      }
 
       table[class*="container-for-gmail-android"] {
         min-width: 290px !important;
@@ -244,15 +263,24 @@
       }
 
       td[class*="free-text"] {
-        padding: 15px 60px 15px !important;
+        padding: 15px !important;
       }
 
       td[class~="mobile-hide-img"] {
-        padding-right: 10px !important;
+        /*padding-right: 10px !important;*/
         /*display: none !important;
         height: 0 !important;
         width: 0 !important;
         line-height: 0 !important;*/
+      }
+
+      td[class~="mobile-hide-img"] img {
+        width: 60px;
+        height: auto;
+      }
+
+      td[class~="mobile-hide-img"] img.book {
+        border-radius: 0px 5px 5px 0px !important;
       }
 
       td[class~="item"] {
@@ -287,6 +315,11 @@
       td[class="mini-img"] img{
         width: 150px !important;
       }
+
+      /*item-table-header*/
+      td[class*="item-table-header"] {
+        font-size: 11px !important;
+      }
     }
   </style>
 </head>
@@ -311,7 +344,7 @@
                 <table cellpadding="0" cellspacing="0" width="600" class="w320">
                   <tr>
                     <td class="center" style="padding-top: 20px; padding-bottom: 20px;">
-                      <a href="#"> <img width="200" src="../img/logos/logo-prettysimple.png" alt="" /> </a>
+                      <a href="#"> <img width="200" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/70e10700-a9a2-41bc-96b2-c08ea4e43320.png" alt="" /> </a>
                     </td>
                   </tr>
                 </table>
@@ -346,23 +379,15 @@
               <img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/6a9e3d90-19c0-459c-a873-721a46a56a2f.jpg" style="max-width: 100%;" alt="" />
             </td>
           </tr>
+
           <tr>
             <td class="free-text">
+              <p class="extra-info">
               Your order is next in line to be printed, hand assembled, stitched together, and then shipped right to your door.
               Since we are making your item especially for you, kindly allow up to 10 business days for your order to ship.
               You will receive another email with the tracking information when it has been shipped. Whoohoo!
               Track your order status <a href="#">here</a> or click the button above. You can even re-order if you need more!
-            </td>
-          </tr>
-          <tr>
-            <td class="button">
-              <div><!--[if mso]>
-                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:155px;" arcsize="15%" strokecolor="#ffffff" fillcolor="#ff6f6f">
-                  <w:anchorlock/>
-                  <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">Track Order</center>
-                </v:roundrect>
-              <![endif]--><a href="http://"
-              style="background-color:#57D2C8;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:18px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;width:235px;-webkit-text-size-adjust:none;mso-hide:all;">VIEW ORDER STATUS</a></div>
+              </p>
             </td>
           </tr>
           <tr>
@@ -411,6 +436,17 @@
               </table>
             </td>
           </tr>
+          <tr>
+            <td class="button">
+              <div><!--[if mso]>
+                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:155px;" arcsize="15%" strokecolor="#ffffff" fillcolor="#ff6f6f">
+                  <w:anchorlock/>
+                  <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">Track Order</center>
+                </v:roundrect>
+              <![endif]--><a href="http://"
+              style="background-color:#57D2C8;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:18px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;width:235px;-webkit-text-size-adjust:none;mso-hide:all;">VIEW ORDER STATUS</a></div>
+            </td>
+          </tr>
         </table>
       </center>
     </td>
@@ -432,13 +468,13 @@
               <td class="item-table">
                 <table cellspacing="0" cellpadding="0" width="100%">
                   <tr>
-                    <td class="title-dark" width="300">
+                    <td class="title-dark item-table-header" width="300">
                       ITEM
                     </td>
-                    <td class="title-dark" width="163">
+                    <td class="title-dark item-table-header" width="163">
                       QTY
                     </td>
-                    <td class="title-dark" width="97">
+                    <td class="title-dark item-table-header" width="97">
                       TOTAL
                     </td>
                   </tr>
@@ -450,10 +486,10 @@
                         <tr>
                           <td class="mobile-hide-img">
                             <!-- testing: book -->
-                            <img width="110" height="auto" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/bae5085f-0311-4704-976b-d64bb9a122ee.png" alt="item1">
+                            <img class="book" width="110" height="176" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/bae5085f-0311-4704-976b-d64bb9a122ee.png" alt="item1">
                           </td>
                           <td class="product">
-                            <span style="color: #4d4d4d; font-weight:bold;">Book</span> <br />
+                            <span style="color: #4d4d4d;">Book</span> <br />
                             Blank <br />
                             Britt Bass Watercolor <br />
                             $15.00  <span style="color: #CBCBCB;">/ea</span>
@@ -476,10 +512,10 @@
                         <tr>
                           <td class="mobile-hide-img">
                             <!-- testing: note -->
-                            <img width="110" height="auto" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/6f34e781-d6bf-4dce-af74-d9e16f33c27b.png" alt="item2">
+                            <img class="note" width="110" height="86" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/6f34e781-d6bf-4dce-af74-d9e16f33c27b.png" alt="item2">
                           </td>
                           <td class="product">
-                            <span style="color: #4d4d4d; font-weight: bold;">Note</span> <br />
+                            <span style="color: #4d4d4d;">Note</span> <br />
                             Britt Bass Watercolor <br />
                             $20.00 <span style="color: #CBCBCB;">/ea</span>
                           </td>
@@ -508,15 +544,15 @@
                     <td class="item-col quantity" style="text-align:right; padding-right: 10px; border-top: 1px solid #cccccc;">
                       <span class="total-space">Subtotal</span> <br />
                       <span class="total-space">Discounts</span> <br />
-                      <span class="total-space" style="height: 50px;">Code</span> <br />
+                      <span class="total-space code">Code</span> <br />
                       <span class="total-space">Tax</span>  <br />
                       <span class="total-space">Shipping</span> <br />
                       <span class="total-space" style="font-weight: bold; color: gray">Total</span>
                     </td>
                     <td class="item-col price" style="text-align: left; border-top: 1px solid #cccccc;">
                       <span class="total-space">$38.00</span> <br />
-                      <span class="total-space">($41.00)</span> <br />
-                      <span class="total-space" style="height: 50px;">new-3X4N-1X60-4072</span> <br />
+                      <span class="total-space">$41.00</span> <br />
+                      <span class="total-space code">new-3X4N-1X60-4072</span> <br />
                       <span class="total-space">$0.75</span>  <br />
                       <span class="total-space">$1.00</span>  <br />
                       <span class="total-space" style="font-weight:bold; color: gray">$15.77</span>
