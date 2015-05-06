@@ -123,6 +123,8 @@
 			padding:12px 15px 15px;
 			text-align:left;
 			width:253px;
+      vertical-align: top !important;
+      height: 185px !important;
 		}
 		.mini-container-left{
 			width:278px;
@@ -329,7 +331,7 @@
                 <table cellpadding="0" cellspacing="0" width="600" class="w320">
                   <tr>
                     <td class="center" style="padding-top: 20px; padding-bottom: 20px;">
-                      <a href="#"> <img width="200" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/70e10700-a9a2-41bc-96b2-c08ea4e43320.png" alt=""> </a>
+                      <a href="http://www.maydesigns.com"> <img width="200" src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/70e10700-a9a2-41bc-96b2-c08ea4e43320.png" alt=""> </a>
                     </td>
                   </tr>
                 </table>
@@ -370,8 +372,8 @@
               <p class="extra-info">
               Hi {{ details.first_name }}! Your order is next in line to be printed, hand assembled, stitched together, and then shipped right to your door.
               Since we are making your item especially for you, kindly allow up to 10 business days for your order to ship.
-              You will receive another email with the tracking information when it has been shipped. Whoohoo!
-              Track your order status <a href="http://www.maydesigns.com/shop/checkout/success/{{ details.order_id }}">here</a> or click the button below. You can even re-order if you need more!
+              You will receive another email with the tracking information when it has been shipped.
+              See your order status <a href="http://www.maydesigns.com/shop/checkout/success/{{ details.order_id }}">here</a> or click the button below. You can even re-order if you need more!
               </p>
             </td>
           </tr>
@@ -390,6 +392,7 @@
                                 placed by: {{ details.first_name }} {{ details.last_name }} <br>
                                 date: March 27, 2015, 2:14 p.m.  <br>
                                 phone: {{ details.phone }} <br>
+                                <br>
                                 <br>
                               </td>
                             </tr>
@@ -463,16 +466,15 @@
                     </td>
                   </tr>
 
-                  <!-- BEGIN PRODUCT LOOP // -->
-                  {{#each items}}
-                  {{#if book}}
+                  <!-- BEGIN PRODUCT LOOP:BOOKS // -->
+                  {{#each items.books}}
                   <tr>
                     <td class="item-col item">
                       <table cellspacing="0" cellpadding="0" width="100%">
                         <tr>
                           <td class="mobile-hide-img">
                             <!-- testing: book -->
-                            <img class="book" width="110" height="176" src="http://www.maydesigns.com/{{ book.preview }}" alt="Book preview">
+                            <img class="book" width="110" height="176" src="http://www.maydesigns.com{{ preview }}" alt="Book preview">
                           </td>
                           <td class="product">
                             <span style="color: #4d4d4d;">Book</span> <br>
@@ -483,7 +485,7 @@
 
                             {{ book.inside_pages }} <br>
                             {{ book.cover_design }} <br>
-                            ${{ price }}  <span style="color: #CBCBCB;">/ea</span>
+                            {{ price }}  <span style="color: #CBCBCB;">/ea</span>
                           </td>
                         </tr>
                       </table>
@@ -492,20 +494,22 @@
                       {{ quantity }}
                     </td>
                     <td class="item-col">
-                      ${{ final_price }}
+                      {{ final_price }}
                     </td>
                   </tr>
-                  {{/if}}
+                  {{/each}}
+                  <!-- // END PRODUCT LOOP:BOOKS -->
 
-                  {{#if note}}
+                  <!-- BEGIN PRODUCT LOOP:NOTES // -->
+                  {{#each items.notes}}
                   <tr>
                     <td class="item-col item">
                       <table cellspacing="0" cellpadding="0" width="100%">
                         <tr>
                           <td class="mobile-hide-img">
                             <!-- testing: note -->
-                            <img class="note" width="110" height="86" src="http://www.maydesigns.com/{{ preview_url }}" alt="Note front preview">
-                            <img class="note" width="110" height="86" src="http://www.maydesigns.com/{{ back_preview_url }}" alt="Note back preview">
+                            <img class="note" width="110" height="86" src="http://www.maydesigns.com{{ note.preview_url }}" alt="Note front preview">
+                            <img class="note" width="110" height="86" src="http://www.maydesigns.com{{ note.back_preview_url }}" alt="Note back preview">
                           </td>
                           <td class="product">
                             <span style="color: #4d4d4d;">Note</span> <br>
@@ -518,7 +522,7 @@
                             {{/if}}
 
                             {{ note.cover_design }} <br>
-                            ${{ price }}  <span style="color: #CBCBCB;">/ea</span>
+                            {{ price }}  <span style="color: #CBCBCB;">/ea</span>
                           </td>
                         </tr>
                       </table>
@@ -527,27 +531,29 @@
                       {{ quantity }}
                     </td>
                     <td class="item-col">
-                      ${{ final_price }}
+                      {{ final_price }}
                     </td>
                   </tr>
-                  {{/if}}
+                  {{/each}}
+                  <!-- // END PRODUCT LOOP:NOTES -->
 
-                  {{#if card}}
+                  <!-- BEGIN PRODUCT LOOP:CARDS // -->
+                  {{#each items.cards}}
                   <tr>
                     <td class="item-col item">
                       <table cellspacing="0" cellpadding="0" width="100%">
                         <tr>
                           <td class="mobile-hide-img">
                             <!-- testing: note -->
-                            <img class="card" width="110" height="auto" src="http://www.maydesigns.com/{{ card.preview_url }}" alt="Card front preview">
-                            <img class="card" width="110" height="auto" src="http://www.maydesigns.com/{{ card.back_preview_url }}" alt="Card back preview">
+                            <img class="card" width="{{card.width}}" height="{{card.height}}" src="http://www.maydesigns.com{{ card.preview_url }}" alt="Card front preview">
+                            <img class="card" width="{{card.width}}" height="{{card.height}}" src="http://www.maydesigns.com{{ card.back_preview_url }}" alt="Card back preview">
                           </td>
                           <td class="product">
                             <span style="color: #4d4d4d;">Card</span> <br>
                             {{ card.template }}, {{ card.cover_design }} <br>
                             {{ card.paper_type }} paper, {{ card.die_cut }} <br>
                             {{ card.envelope }} envelope <br>
-                            ${{ price }}  <span style="color: #CBCBCB;">/ea</span>
+                            {{ price }}  <span style="color: #CBCBCB;">/ea</span>
 
                             {{#if item.card.send_to}}
                               Send to: {{ card.send_to.first_name }} {{ card.send_to.last_name }} <br>
@@ -564,13 +570,74 @@
                       {{ quantity }}
                     </td>
                     <td class="item-col">
-                      ${{ final_price }}
+                      {{ final_price }}
                     </td>
                   </tr>
-                  {{/if}}
                   {{/each}}
-                  <!-- // END PRODUCT LOOP -->
+                  <!-- END PRODUCT LOOP:CARDS // -->
 
+                  <!-- BEGIN PRODUCT LOOP:PHOTOBOOKS // -->
+                  {{#each items.photobooks}}
+                  <tr>
+                    <td class="item-col item">
+                      <table cellspacing="0" cellpadding="0" width="100%">
+                        <tr>
+                          <td class="mobile-hide-img">
+                            <img class="photobook" width="110" height="56" src="http://www.maydesigns.com{{ preview }}" alt="Photo Book preview">
+                          </td>
+                          <td class="product">
+                            <span style="color: #4d4d4d;">Photo Book</span> <br>
+                            {{ photobook.title }} <br>
+                            {{ photobook.cover_design }} <br>
+                            {{ photobook.size }} <br>
+                            {{ price }}  <span style="color: #CBCBCB;">/ea</span> <br>
+
+                            {{#if item.photobook.send_to}}
+                              Send to: {{ photobook.send_to.first_name }} {{ photobook.send_to.last_name }} <br>
+                              {{ photobook.send_to.street_address }}, {{ photobook.send_to.street_address2 }} <br>
+                              {{ photobook.send_to.city }}, {{ photobook.send_to.state }} <br>
+                              {{ photobook.send_to.zip }}
+                            {{/if}}
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td class="item-col quantity">
+                      {{ quantity }}
+                    </td>
+                    <td class="item-col">
+                      {{ final_price }}
+                    </td>
+                  </tr>
+                  {{/each}}
+                  <!-- END PRODUCT LOOP:PHOTOBOOKS // -->
+
+                  <!-- BEGIN PRODUCT LOOP:PHOTOBOOK VOUCHERS // -->
+                  {{#each items.vouchers}}
+                  <tr>
+                    <td class="item-col item">
+                      <table cellspacing="0" cellpadding="0" width="100%">
+                        <tr>
+                          <td class="mobile-hide-img">
+                            <img class="photobook" width="110" height="110" src="http://www.maydesigns.com{{ preview }}" alt="Photo Book Voucher">
+                          </td>
+                          <td class="product">
+                            <span style="color: #4d4d4d;">Photo Book Voucher</span> <br>
+                            Code: {{ voucher.code }} <br>
+                            {{ price }}  <span style="color: #CBCBCB;">/ea</span> <br>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td class="item-col quantity">
+                      {{ quantity }}
+                    </td>
+                    <td class="item-col">
+                      {{ final_price }}
+                    </td>
+                  </tr>
+                  {{/each}}
+                  <!-- END PRODUCT LOOP:PHOTOBOOK VOUCHERS // -->
 
                   <tr>
                     <td class="item-col item mobile-row-padding"></td>
@@ -584,7 +651,7 @@
                     </td>
                     <td class="item-col quantity" style="text-align:right; padding-right: 10px; border-top: 1px solid #cccccc;">
                       <span class="total-space">Subtotal</span> <br>
-                      {{#if discount_amt}}
+                      {{#if details.discount_info}}
                       <span class="total-space">Discounts</span> <br>
                       <span class="total-space code">Code</span> <br>
                       {{/if}}
@@ -593,14 +660,14 @@
                       <span class="total-space" style="font-weight: bold; color: gray">Total</span>
                     </td>
                     <td class="item-col price" style="text-align: left; border-top: 1px solid #cccccc;">
-                      <span class="total-space">${{ subtotal }}</span> <br>
-                      {{#if discount_amt}}
-                      <span class="total-space">${{discount_amt}}</span> <br>
-                      <span class="total-space code">{{discount_info}}</span> <br>
+                      <span class="total-space">{{ subtotal }}</span> <br>
+                      {{#if details.discount_info}}
+                      <span class="total-space">{{ details.discount_amt }}</span> <br>
+                      <span class="total-space code">{{ details.discount_info }}</span> <br>
                       {{/if}}
-                      <span class="total-space">${{tax}}</span>  <br>
-                      <span class="total-space">${{shipping_amt}}</span>  <br>
-                      <span class="total-space" style="font-weight:bold; color: gray">${{total_charged}}</span>
+                      <span class="total-space">{{ details.tax }}</span>  <br>
+                      <span class="total-space">{{ details.shipping_amt }}</span>  <br>
+                      <span class="total-space" style="font-weight:bold; color: gray">{{ details.total_charged }}</span>
                     </td>
                   </tr>
                 </table>
@@ -626,8 +693,8 @@
         <table cellpadding="0" cellspacing="0" width="600" class="w320">
           <tr>
             <td class="header-img">
-              <!-- we're super friendly! follow us here! -->
-              <img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/7189b680-b12e-44ce-8981-a979230cd322.jpg" style="max-width: 100%;" alt="">
+              <!-- we're super friendly! follow us here! image -->
+              <img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/0a3fb253-5550-41e1-8e10-73484254af39.png" style="max-width: 100%;" alt=""><!-- /we're super friendly! follow us here! image -->
             </td>
           </tr>
           <tr>
@@ -638,18 +705,18 @@
                     <table cellspacing="0" cellpadding="0" width="100%" style="border-collapse:separate !important;">
                       <tr>
                         <td class="mini-img">
-                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/db04cda1-dd6d-4399-a87f-d4a38ae48239.jpg" alt="product"></a>
+                          <a href="https://instagram.com/maydesigns/"><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/bcda1392-7862-4ccb-8f24-fcc2c7c904a0.jpg" alt="instagram"></a>
                         </td>
                         <td class="mini-img">
-                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/fb981765-2ac8-4e8a-9be6-a0489ae67781.jpg" alt="product"></a>
+                          <img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/ea72c6ae-47bf-4d50-a04c-0d884f379cc4.jpg" alt="shelf filled with May Books">
                         </td>
                       </tr>
                       <tr>
                         <td class="mini-img">
-                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/4e10cf0d-cf6c-452e-bb77-aaf1f3663266.jpg" alt="product"></a>
+                          <img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/60529096-06c4-4177-83fd-fa75c63daed8.jpg" alt="britt bass patterns">
                         </td>
                         <td class="mini-img">
-                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/265b3adf-7a26-42a4-bc34-e74ad0c92edc.jpg" alt="product"></a>
+                          <a href="https://twitter.com/maydesigns"><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/a4ae913b-4214-4512-b560-0f86fefeb28b.jpg" alt="twitter"></a>
                         </td>
                       </tr>
                     </table>
@@ -658,18 +725,18 @@
                     <table cellspacing="0" cellpadding="0" width="100%" style="border-collapse:separate !important;">
                       <tr>
                         <td class="mini-img">
-                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/a2bc42dd-f49b-4273-ae13-286a29aa43cb.jpg" alt="product"></a>
+                          <a href="https://www.facebook.com/MayBooks"><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/82e9ab11-1fc7-4138-a8eb-d9117e53a434.jpg" alt="facebook"></a>
                         </td>
                         <td class="mini-img">
-                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/d24d4a46-e31f-453d-bd72-d0c628b1eb73.jpg" alt="product"></a>
+                          <img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/215aa01d-3b77-41d8-8dc1-36480a506896.jpg" alt="2015 agendas">
                         </td>
                       </tr>
                       <tr>
                         <td class="mini-img">
-                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/6fd793a2-8064-4a26-8707-07d1d1f976ee.jpg" alt="product"></a>
+                          <img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/714c6a27-e181-4e15-853d-45654ded7da0.jpg" alt="use our notebooks to get creative">
                         </td>
                         <td class="mini-img">
-                          <a href=""><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/e88d8f28-9d1f-49d0-891d-7294df9363d7.jpg" alt="product"></a>
+                          <a href="https://www.pinterest.com/maybooks/"><img src="https://gallery.mailchimp.com/b717be160771cebd8de722eb8/images/e7663ce3-d956-4693-a779-68667b14c94c.jpg" alt="pinterest"></a>
                         </td>
                       </tr>
                     </table>
